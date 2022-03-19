@@ -55,6 +55,7 @@ plt.text(0.5, 0.85, '95% cut-off threshold', color = 'red', fontsize=16)
 ax.grid(axis='x')
 plt.show()
 
+pca = PCA(0.95).fit(scaled_features)
 reduced_features = pca.transform(scaled_features)
 reduced_features[:5]
 # %%
@@ -93,10 +94,17 @@ print(kl.elbow)
 kmeans = KMeans(n_clusters=kl.elbow, **kmeans_kwargs)
 kmeans.fit(reduced_features)
 
+#%%
+# kmeans.cluster_centers_.shape
+def map_centroid(row):
+    return kmeans.cluster_centers_[row["kmeans_cluster_id"]].tolist()
 # %%
 image_dataset["kmeans_cluster_id"] = kmeans.labels_
 display(image_dataset.head(2))
+image_dataset["kmeans_cluster_centroid"] = image_dataset.apply(map_centroid, axis=1)
+display(image_dataset.head(2))
 image_dataset['kmeans_cluster_id'].value_counts().plot(kind='bar')
+
 
 #%%
 # image_dataset[image_dataset["kmeans_cluster_id"]==0]
@@ -192,3 +200,19 @@ for gmm_idx in range(4):
 from joblib import dump, load
 dump(pca, './models/pca.joblib')
 dump(kmeans, './models/kmeans.joblib')
+# %%
+# %load_ext autoreload
+# %autoreload
+# from src.mongoDB_connector import MONGODB_CONNECTOR
+# # %%
+# DB_connector = MONGODB_CONNECTOR(user="shared_user", token="2pZGb4axFMwpl3qR")
+# # %%
+# # DB_connector.create_insert_table(image_dataset)
+# image_dataset.head()
+
+# # type(image_dataset["bert_ecd"][0])
+
+
+# # %%
+# DB_connector.create_insert_table(image_dataset)
+# # %%
