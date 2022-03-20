@@ -1,16 +1,16 @@
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.FlatMapFunction;
+import org.apache.spark.api.java.function.FilterFunction;
+import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.*;
+import org.apache.spark.sql.api.java.UDF1;
+import static org.apache.spark.sql.functions.callUDF;
 import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
 import org.graphframes.GraphFrame;
-import org.graphframes.lib.AggregateMessages;
-import scala.Tuple2;
-import scala.Tuple3;
+import scala.collection.mutable.Seq;
+import scala.collection.mutable.WrappedArray;
+
 
 import java.util.*;
 
@@ -30,49 +30,58 @@ public class FindPath {
         return Math.sqrt(distance);
     }
 
+    /*Define global variables */
     static boolean runOnCluster = false;
+    static SparkConf sparkConf = new SparkConf().setAppName("FindPath");
+//    static SparkSession spark = null;
+
     public static void main(String[] args) {
-        SparkConf sparkConf = new SparkConf().setAppName("FindPath");
-        SparkSession spark = null;
         if (!runOnCluster) {
             sparkConf.setMaster("local[2]");
             sparkConf.setJars(new String[] { "target/eduonix_spark-deploy.jar" });
-            spark = SparkSession.builder().config(sparkConf).getOrCreate();
-        } else {
-            spark = SparkSession.builder().config(sparkConf).getOrCreate();
+//            spark = SparkSession.builder().config(sparkConf).getOrCreate();
         }
+        JavaSparkContext jsc = new JavaSparkContext(sparkConf);
+        SQLContext sqlContext = new SQLContext(jsc);
+
+//        Register_UDFs(spark);
 
         Map<String, String> options = new HashMap<>();
-//        options.put("rowTag", "node");
-//        Dataset<Row> nodeData = spark.read()
-//                .options(options)
-//                .format("xml")
-//                .load("src/main/resources/NUS.osm");
-//        nodeData.createOrReplaceTempView("nodeDF");
-//        Dataset<Row> nodeDF = spark.sql("select _id as node_id, _lat as latitude, _lon as longitude from nodeDF");
-//        nodeDF.show(10);
-
-//        List<StructField> fields = new ArrayList<>();
-//        fields.add(DataTypes.createStructField("_id",DataTypes.StringType, true));
-//        StructField nodesStrcut =
-//
-//        fields.add(DataTypes.createStructField("nd",DataTypes.createArrayType(DataTypes.createMapType(DataTypes.StringType, DataTypes.StringType)), true));
-////        fields.add(DataTypes.createStructField("tag",DataTypes.createArrayType(DataTypes.createMapType(DataTypes.StringType, DataTypes.StringType)), true));
-//        StructType schema = DataTypes.createStructType(fields);
-
-        options.put("rowTag", "way");
-        Dataset<Row> roadData = spark.read()
+        options.put("rowTag", "node");
+        Dataset<Row> nodeData = sqlContext.read()
                 .options(options)
-//                .schema(schema)
                 .format("xml")
                 .load("src/main/resources/NUS.osm");
-//        roadData.show(10);
-//        roadData.printSchema();
+        nodeData.createOrReplaceTempView("nodeDF");
+        Dataset<Row> nodeDF = sqlContext.sql("select _id as node_id, _lat as latitude, _lon as longitude from nodeDF");
+        nodeDF.show(10);
+
+        options.put("rowTag", "way");
+        Dataset<Row> roadData = sqlContext.read()
+                .options(options)
+                .format("xml")
+                .load("src/main/resources/NUS.osm");
+
+        sqlContext.udf().register("checkOneWay", new UDF1<WrappedArray, Boolean>(){
+            private static final long serialVersionUID = -5372447039252716846L;
+            @Override
+            public Boolean call(WrappedArray tags) throws Exception {
+                return tags.toString().contains("oneway");
+            }
+        }, DataTypes.BooleanType);
+
+        Dataset<Row> highwayDF = roadData.filter(new FilterFunction<Row>() {
+            @Override
+            public boolean call(Row row) throws Exception {
+                return row.getAs("tag").toString().contains("highway");
+            }
+        }).withColumn("oneway", callUDF("checkOneWay", roadData.col("tag")));
+
+        highwayDF.show(5);
 //
-//        roadData.createOrReplaceTempView("roadDF");
-//        Dataset<Row> highwayDF = spark.sql("select _id as road_id, nd as nodes, tag as tag from roadDF").filter(roadData.select("tag").col("_k").contains("highway"));
-//        highwayDF.show();
-        roadData.select("tag").flatMap(_._k).show();
-        spark.stop();
+//        highwayDF.createOrReplaceTempView("highwayDF");
+//        sqlContext.sql("select _id as road_id, nd as nodes, oneway from highwayDF where oneway=true").show(5);
+
+        jsc.stop();
     }
 }
