@@ -8,6 +8,8 @@ import org.apache.spark.sql.api.java.UDF1;
 import static org.apache.spark.sql.functions.callUDF;
 
 import org.apache.spark.sql.api.java.UDF4;
+import org.apache.spark.sql.catalyst.encoders.ExpressionEncoder;
+import org.apache.spark.sql.catalyst.encoders.RowEncoder;
 import org.apache.spark.sql.types.ArrayType;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
@@ -127,22 +129,29 @@ public class FindPath {
         roadDF = roadDF.withColumn("oneway", callUDF("checkOneWay", roadDF.col("tag")));
         roadDF.show(5);
 
-        Dataset<String> test = roadDF.map(new MapFunction<Row, String>() {
+        List<StructField> listOfStructField=new ArrayList<StructField>();
+        listOfStructField.add(DataTypes.createStructField("src", DataTypes.LongType, true));
+        listOfStructField.add(DataTypes.createStructField("dest", DataTypes.LongType, true));
+        listOfStructField.add(DataTypes.createStructField("road_id", DataTypes.LongType, true));
+        StructType relation_schema = DataTypes.createStructType(listOfStructField);
+        ExpressionEncoder<Row> encoder = RowEncoder.apply(relation_schema);
+
+        Dataset<String> test = roadDF.map(new MapFunction<Row, Dataset<Row>>() {
             @Override
-            public String call(Row row) throws Exception {
-                ArrayList way_relations = new ArrayList();
-                List nds = row.getList(row.fieldIndex("nd"));
+            public Dataset<Row> call(Row row) throws Exception {
+                List<Row> way_relations=new ArrayList<Row>();
+                List<Row> nds = row.getList(row.fieldIndex("nd"));
                 for(int i=0; i < nds.size()-1; i++){
-                    way_relations.add(Arrays.asList(nds.get(i), nds.get(i+1), row.getLong(row.fieldIndex("road_id")))); // src, dest, road_id,
+                    way_relations.add(RowFactory.create(nds.get(i).getLong(0), nds.get(i+1).getLong(0), row.getLong(row.fieldIndex("road_id")))); // src, dest, road_id,
                 }
                 if(!row.getBoolean(row.fieldIndex("oneway"))){
                     for(int i=nds.size()-1; i > 0; i--){
-                        way_relations.add(Arrays.asList(nds.get(i), nds.get(i-1), row.getLong(row.fieldIndex("road_id")))); // src, dest, road_id,
+                        way_relations.add(RowFactory.create(nds.get(i).getLong(0), nds.get(i-1).getLong(0), row.getLong(row.fieldIndex("road_id")))); // src, dest, road_id,
                     }
                 }
-                return way_relations.toString();
+                return sqlContext.createDataFrame(way_relations, relation_schema);
             }
-        }, Encoders.STRING());
+        }, encoder);
 
         test.show(5);
 
