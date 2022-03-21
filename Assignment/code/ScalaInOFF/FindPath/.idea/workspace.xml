@@ -30,7 +30,7 @@
   </component>
   <component name="ProjectId" id="26DZ8gXFF4zdDgDSvVnlXtTodf1" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/workspace/spark-xml-2.12" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/input" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -38,6 +38,9 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\YUANMA\Desktop\NUS Learning Materials\CS5425\code\ScalaInOFF\FindPath\input" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\YUANMA\Desktop\NUS Learning Materials\CS5425\code\ScalaInOFF\FindPath\src\main\resources" />
     </key>
@@ -58,6 +61,7 @@
     <configuration name="FindPath" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FindPath" />
       <module name="FindPath" />
+      <option name="PROGRAM_PARAMETERS" value="input/NUS.osm" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
