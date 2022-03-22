@@ -20,6 +20,7 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.graphframes.GraphFrame;
 import org.apache.spark.graphx.*;
+import scala.collection.JavaConverters;
 import scala.collection.mutable.WrappedArray;
 
 
@@ -171,11 +172,23 @@ public class FindPath {
         String from_node = "id = 1534830314";
         String to_node = "id = 1534822530";
         Dataset<Row> paths = g.bfs().fromExpr(from_node).toExpr(to_node).run();
-        paths.show();
-//        List inter_edges = paths.first().getList(1);
+        paths.printSchema();
+
+        List<String> nodes_on_path = Arrays.asList("from.id");
+        for(String col: paths.columns()){
+            if(col.contains("v")) nodes_on_path.add(String.format("%s.id", col));
+        }
+        nodes_on_path.add("to.id");
+        Dataset<Row> resPath = paths.select(JavaConverters.asScalaIteratorConverter(nodes_on_path).asScala().toSeq());
+//        paths.show();
+        List<Double> inter_edges = resPath.first().getList(0);
+        String result = String.format("%f ", inter_edges.get(0));
+        for(Double node: inter_edges){
+            result+=String.format("-> %f ", node);
+        }
 //        String str_path = "1534830314 ->";
 //        for (inter_node: )
-//        System.out.println(paths.first().getList(1).toString());
+        System.out.println(result);
         jsc.stop();
     }
 }
