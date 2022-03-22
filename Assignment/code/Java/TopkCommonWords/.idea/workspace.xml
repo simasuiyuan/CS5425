@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="818ebd88-fd90-43c1-b470-8fc4f98b1df2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/binaries/osmutils_linux3.10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/binaries/osmutils_linux5.16" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/binaries/osmutils_mac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/binaries/osmutils_win32.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/binaries/osmutils_win64.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/input/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/FindPath.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/input/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/input/NUS.osm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/src/main/java/FindPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/src/main/java/FindPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/src/main/resources/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/src/main/resources/NUS.osm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/FindPath.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScalaInOFF/FindPath/target/classes/NUS.osm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Project/MetaDataDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/MetaDataDemo.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../Project/partition_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/partition_key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../Project/src/mongoDB_connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/src/mongoDB_connector.py" afterDir="false" />
     </list>
@@ -48,7 +61,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ScalaInOFF/FindPath" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
