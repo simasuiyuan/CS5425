@@ -1,15 +1,11 @@
 import org.apache.hadoop.shaded.org.eclipse.jetty.websocket.common.frames.DataFrame;
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.FilterFunction;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.api.java.function.MapFunction;
-import org.apache.spark.api.java.function.ReduceFunction;
+import org.apache.spark.api.java.function.*;
 import org.apache.spark.sql.*;
 import org.apache.spark.sql.api.java.UDF1;
-
-import static org.apache.spark.sql.functions.array_contains;
-import static org.apache.spark.sql.functions.callUDF;
 
 import org.apache.spark.sql.api.java.UDF4;
 import org.apache.spark.sql.catalyst.encoders.ExpressionEncoder;
@@ -20,7 +16,9 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.graphframes.GraphFrame;
 import org.apache.spark.graphx.*;
+import scala.Serializable;
 import scala.collection.JavaConverters;
+import scala.collection.Seq;
 import scala.collection.mutable.WrappedArray;
 
 import java.io.FileInputStream;
@@ -28,6 +26,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+
+import static org.apache.spark.sql.functions.*;
 
 public class FindPath {
     // From: https://stackoverflow.com/questions/3694380/calculating-distance-between-two-points-using-latitude-longitude
@@ -86,10 +86,15 @@ public class FindPath {
                 .schema(schema)
                 .load(raw_osm_file)
                 .withColumnRenamed("_id", "road_id");
-
-        roadDF = roadDF.filter(array_contains(roadDF.col("tag._k"), "highway"))
-                .withColumn("oneway", callUDF("checkOneWay", roadDF.col("tag")));
-
+        if(!createTempViewName.isEmpty()){
+            roadDF.createOrReplaceTempView(createTempViewName);
+        } else {
+            roadDF.createOrReplaceTempView("roadDF");
+        }
+        roadDF = sqlContext.sql(
+                "select *, checkOneWay(tag) as oneway " +
+                        "from roadDF " +
+                        "where array_contains(tag._k, \"highway\")");
         if(!createTempViewName.isEmpty()) roadDF.createOrReplaceTempView(createTempViewName);
         return roadDF;
     }
@@ -155,6 +160,11 @@ public class FindPath {
         return extractStringPath(sqlContext, paths);
     }
 
+    private static Float getRunTime(Long start){
+        long end = System.currentTimeMillis();
+        return (end - start) / 1000F;
+    }
+
     /* Define & register UDFS */
     private static void register_UDFs(SQLContext sqlContext){
         sqlContext.udf().register("checkOneWay", new UDF1<WrappedArray<Row>, Boolean>(){
@@ -196,8 +206,8 @@ public class FindPath {
         String result_adjmap_file = args[2];
         String result_path_file = args[3];
 
+        new GraphFrame();
         long start = System.currentTimeMillis();
-        long end;
         float runtime;
 
         register_UDFs(sqlContext);
@@ -205,35 +215,54 @@ public class FindPath {
         /* construct relation table */
         Dataset<Row> nodeDF = getNodeDF(sqlContext, raw_osm_file, "nodeDF");
         Dataset<Row> roadDF = getRoadDF(sqlContext, raw_osm_file, "roadDF");
-        Dataset<Row> relationDF = getRelationDF(sqlContext, "nodeDF", "roadDF","relationDF");
-        GraphFrame g = new GraphFrame(nodeDF.withColumnRenamed("node_id", "id"),
-                relationDF.withColumnRenamed("source", "src").withColumnRenamed("destination", "dst")).cache();
+        Dataset<Row> relationDF = getRelationDF(sqlContext, "nodeDF", "roadDF","relationDF").cache();
 
-        List<String> all_results = new ArrayList<String>();
-        Scanner input_tasks = new Scanner(new FileInputStream(input_src_dst_file));
-        while(input_tasks.hasNextLine()){
-            String[] task = input_tasks.nextLine().split(" ");
-            /*BFS*/
-            System.out.println(String.format("Processing task: \nsrc node: %s -> dst node: %s", task[0], task[1]));
-            String result = getPathsFromBFS(sqlContext, g, task[0], task[1]);
-            //check run time for task
-            end = System.currentTimeMillis();
-            runtime = (end - start) / 1000F;
-            System.out.println(String.format("path found: %s", result));
-            System.out.println(String.format("Runtime: %f seconds", runtime));
+//        Dataset<Row> adjMapCollection = sqlContext.sql(
+//                "select source, concat_ws(\" \", source, sort_array(collect_list(destination),true)) " +
+//                        "from relationDF " +
+//                        "group by source " );
+//        System.out.println(adjMapCollection.where("source=9346078669").collectAsList().toString());
 
-            all_results.add(result);
-        }
+        List<Row> adjMapCollection = sqlContext.sql(
+                "select concat_ws(\" \", source, sort_array(collect_list(destination),true)) " +
+                        "from relationDF " +
+                        "group by source " +
+                        "order by source").collectAsList();
+
+//        GraphFrame g = GraphFrame
+//                .apply(nodeDF.withColumnRenamed("node_id", "id"),
+//                        relationDF.withColumnRenamed("source", "src").withColumnRenamed("destination", "dst"))
+//                .cache();;
+//
+//        List<String> all_results = new ArrayList<String>();
+//        Scanner input_tasks = new Scanner(new FileInputStream(input_src_dst_file));
+//        while(input_tasks.hasNextLine()){
+//            String[] task = input_tasks.nextLine().split(" ");
+//            /*BFS*/
+//            System.out.println(String.format("Processing task: \nsrc node: %s -> dst node: %s", task[0], task[1]));
+//            String result = getPathsFromBFS(sqlContext, g, task[0], task[1]);
+//
+//            //check run time for task
+//            runtime = getRunTime(start);
+//            System.out.println(String.format("path found: %s", result));
+//            System.out.println(String.format("Runtime: %f seconds", runtime));
+//
+//            all_results.add(result);
+//        }
+
         jsc.stop();
 
-        FileWriter fw = new FileWriter(result_path_file);
-        for(String res: all_results){
-            fw.write(res+"\n");
+        FileWriter fw_adjmap = new FileWriter(result_adjmap_file);
+        for(Row row: adjMapCollection){
+            fw_adjmap.write(row.getString(0)+"\n");
         }
-        fw.close();
-
-        end = System.currentTimeMillis();
-        runtime = (end - start) / 1000F;
+//        FileWriter fw = new FileWriter(result_path_file);
+//        for(String res: all_results){
+//            fw.write(res+"\n");
+//        }
+//        fw.close();
+//
+        runtime = getRunTime(start);
         System.out.println(String.format("Job done overall Runtime: %f seconds", runtime));
     }
 }
