@@ -198,6 +198,8 @@ for gmm_idx in range(4):
 """ store PCA & clustering model
 """
 from joblib import dump, load
+# scaler
+dump(scaler, './models/scaler.joblib')
 dump(pca, './models/pca.joblib')
 dump(kmeans, './models/kmeans.joblib')
 # %%
