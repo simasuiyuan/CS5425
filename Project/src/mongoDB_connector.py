@@ -13,11 +13,15 @@ class MONGODB_CONNECTOR(object):
         self.connect()
 
     def connect(self):
-        self.client = pymongo.MongoClient(f"mongodb+srv://{self.user}:{self.token}@bigdata.sbz3m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        self.uri = f"mongodb+srv://{self.user}:{self.token}@bigdata.sbz3m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+        self.client = pymongo.MongoClient(self.uri)
         self.project_db = self.client[self.database]
         self.project_table = self.project_db[self.PROJECT_TABLE]
         print(f"available databases:{self.client.list_database_names()}")
         print(f"available collections/tables:{self.project_db.list_collection_names()} from {self.PROJECT_DB}")
+
+    def close(self):
+        self.client.close()
 
     def del_table(self, table_name:str):
         x =self.project_db[table_name].delete_many({})
