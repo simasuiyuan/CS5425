@@ -5,28 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1a116d4-2d27-4031-8d01-631fb290c2d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/binaries/osmutils_linux3.10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/binaries/osmutils_linux5.16" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/binaries/osmutils_mac" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/binaries/osmutils_win32.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/binaries/osmutils_win64.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/FindPath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/FindPath2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/full_test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Java/TopkCommonWords/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java/TopkCommonWords/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Java/TopkCommonWords/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java/TopkCommonWords/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FindPath.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaries/osmutils_linux3.10" beforeDir="false" afterPath="$PROJECT_DIR$/binaries/osmutils_linux3.10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaries/osmutils_linux5.16" beforeDir="false" afterPath="$PROJECT_DIR$/binaries/osmutils_linux5.16" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaries/osmutils_mac" beforeDir="false" afterPath="$PROJECT_DIR$/binaries/osmutils_mac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaries/osmutils_win32.exe" beforeDir="false" afterPath="$PROJECT_DIR$/binaries/osmutils_win32.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaries/osmutils_win64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/binaries/osmutils_win64.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/input/NUS.osm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/.result.adjmap.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/.result.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/result.adjmap.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/result.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result-gpx/1534829927_1534829925.gpx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FindPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FindPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/NUS.osm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FindPath$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FindPath$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FindPath$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FindPath$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FindPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FindPath.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NUS.osm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NUS.osm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Project/MetaDataDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/MetaDataDemo.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../Project/partition_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/partition_key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../Project/src/mongoDB_connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Project/src/mongoDB_connector.py" afterDir="false" />
     </list>
@@ -62,11 +69,15 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="26DZ8gXFF4zdDgDSvVnlXtTodf1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/input" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -84,7 +95,7 @@
       <recent name="C:\Users\YUANMA\Desktop\NUS Learning Materials\CS5425\code\ScalaInOFF\FindPath\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.FindPath">
     <configuration name="FindPath" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FindPath" />
       <module name="FindPath" />
@@ -95,6 +106,13 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="FindPath" />
+      <module name="FindPath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
       <module name="FindPath" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -125,5 +143,18 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
