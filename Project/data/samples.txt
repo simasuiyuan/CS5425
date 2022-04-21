@@ -1,0 +1,339 @@
+2   images_3490fd706da6b61e        a couple of young people with giraffes in a field.
+
+7   images_393cb7feb10902b5        a view of a red truck sitting in a driver's seat [UNK] for the man cross in the back.
+
+8   images_28dd9bb73072d6c6        a dog stands near a silver handle
+
+1   images_3567f456130c4ec2        a person taking a face looking at a cell phone that is shown.
+
+10  images_1c27e643d5bd43bb        there are perched on top of each together.
+
+6   images_141a942ad44d3080        a sign on a table tasting as the side of a restaurant.
+
+14  images_27f0769af257cfd3        a man is snow board [UNK] in between two people with decorated with red
+
+3   images_0c19ba009c91e5bb        a street with cars that has a full of trucks.
+
+9   images_2f3e2cb599c43075        a long train crossing a bridge above the water.
+
+5   images_1f990b331e554127        a stove with [UNK] carved [UNK] eyes in a kitchen, two adorned with a stove a smoke [UNK]
+
+0   images_3313635dda11cb72        a man standing on a black suits stuck into a hospital [UNK] from a business
+
+4   images_1166b9acbbb80436        a [UNK] by a loaf has a [UNK] and tomatoes, carrots, banana, cheese, and green apple
+
+15  images_000000250055            a woman sitting on a bench.
+
+16  images_000000247396            two men on a snowboard while taking pics
+
+13  images_000000165054            a [UNK] picture of the skateboard skate park.
+
+17  images_000000031311            a person sitting on a person standing next to two people have their phones
+
+18  images_000000038885           four engine airliner is parked as it its loading up off of it.
+ 
+11  images_000000113754           an outside vase sitting in a field and flowers.
+
+12  images_000000278444           a man and a woman playing a game with wii remotes.
+
+19  images_000000275507           a young woman standing [UNK] to sitting in the surf board in a boat
+
+20  images_000000186505           a man leaning on a couch looking around the end of a wooden door.
+
+21   images_16b5911ec2643687      a tree branch on the ground in the dirt.
+
+22   images_000000010194         uniform that has hit the ball.
+
+23   images_000000269509         a police officer sitting on a motorcycle outside
+
+24   images_000000189358         the zebras work with a rose in the background.
+
+
+
+
+a couple of young people with giraffes in a field.
+a view of a red truck sitting in a driver's seat [UNK] for the man cross in the back.
+a dog stands near a silver handle
+a person taking a face looking at a cell phone that is shown.
+there are perched on top of each together.
+a sign on a table tasting as the side of a restaurant.
+a man is snow board [UNK] in between two people with decorated with red
+a street with cars that has a full of trucks.
+a long train crossing a bridge above the water.
+a stove with [UNK] carved [UNK] eyes in a kitchen, two adorned with a stove a smoke [UNK]
+a man standing on a black suits stuck into a hospital [UNK] from a business
+a [UNK] by a loaf has a [UNK] and tomatoes, carrots, banana, cheese, and green apple
+a woman sitting on a bench.
+two men on a snowboard while taking pics
+a [UNK] picture of the skateboard skate park.
+a person sitting on a person standing next to two people have their phones
+four engine airliner is parked as it its loading up off of it.
+an outside vase sitting in a field and flowers.
+a man and a woman playing a game with wii remotes.
+a young woman standing [UNK] to sitting in the surf board in a boat
+a man leaning on a couch looking around the end of a wooden door.
+a tree branch on the ground in the dirt.
+uniform that has hit the ball.
+a police officer sitting on a motorcycle outside
+the zebras work with a rose in the background.
+
+
+Encodings sent to redis. Time used = 3 s
+Processing query
+a couple of young people with giraffes in a field.
+cluster = 24
+==============================================
+Complete query
+a couple of young people with giraffes in a field.
+ belongs to cluster: 24. Time used = 27 s
+********************************
+
+
+Processing query
+a view of a red truck sitting in a driver's seat [UNK] for the man cross in the back.
+cluster = 7
+==============================================
+Complete query
+a view of a red truck sitting in a driver's seat [UNK] for the man cross in the back.
+ belongs to cluster: 7. Time used = 41 s
+********************************
+
+
+Processing query
+a dog stands near a silver handle
+cluster = 19
+==============================================
+Complete query
+a dog stands near a silver handle
+ belongs to cluster: 19. Time used = 23 s
+********************************
+
+
+Processing query
+a person taking a face looking at a cell phone that is shown.
+cluster = 23
+==============================================
+Complete query
+a person taking a face looking at a cell phone that is shown.
+ belongs to cluster: 23. Time used = 42 s
+********************************
+
+
+Processing query
+there are perched on top of each together.
+cluster = 23
+==============================================
+Complete query
+there are perched on top of each together.
+ belongs to cluster: 23. Time used = 79 s
+********************************
+
+
+Processing query
+a sign on a table tasting as the side of a restaurant.
+cluster = 4
+==============================================
+Complete query
+a sign on a table tasting as the side of a restaurant.
+ belongs to cluster: 4. Time used = 56 s
+********************************
+
+
+Processing query
+a man is snow board [UNK] in between two people with decorated with red
+cluster = 3
+==============================================
+Complete query
+a man is snow board [UNK] in between two people with decorated with red
+ belongs to cluster: 3. Time used = 13 s
+********************************
+
+
+Processing query
+a street with cars that has a full of trucks.
+cluster = 7
+==============================================
+Complete query
+a street with cars that has a full of trucks.
+ belongs to cluster: 7. Time used = 76 s
+********************************
+
+
+Processing query
+a long train crossing a bridge above the water.
+cluster = 9
+==============================================
+Complete query
+a long train crossing a bridge above the water.
+ belongs to cluster: 9. Time used = 10 s
+********************************
+
+
+Processing query
+a stove with [UNK] carved [UNK] eyes in a kitchen, two adorned with a stove a smoke [UNK]
+cluster = 5
+==============================================
+Complete query
+a stove with [UNK] carved [UNK] eyes in a kitchen, two adorned with a stove a smoke [UNK]
+ belongs to cluster: 5. Time used = 35 s
+********************************
+
+
+Processing query
+a man standing on a black suits stuck into a hospital [UNK] from a business
+cluster = 17
+==============================================
+Complete query
+a man standing on a black suits stuck into a hospital [UNK] from a business
+ belongs to cluster: 17. Time used = 28 s
+********************************
+
+
+Processing query
+a [UNK] by a loaf has a [UNK] and tomatoes, carrots, banana, cheese, and green apple
+cluster = 21
+==============================================
+Complete query
+a [UNK] by a loaf has a [UNK] and tomatoes, carrots, banana, cheese, and green apple
+ belongs to cluster: 21. Time used = 17 s
+********************************
+
+
+Processing query
+a woman sitting on a bench.
+cluster = 15
+==============================================
+Complete query
+a woman sitting on a bench.
+ belongs to cluster: 15. Time used = 30 s
+********************************
+
+
+Processing query
+two men on a snowboard while taking pics
+cluster = 3
+==============================================
+Complete query
+two men on a snowboard while taking pics
+ belongs to cluster: 3. Time used = 16 s
+********************************
+
+
+Processing query
+a [UNK] picture of the skateboard skate park.
+cluster = 13
+==============================================
+Complete query
+a [UNK] picture of the skateboard skate park.
+ belongs to cluster: 13. Time used = 24 s
+********************************
+
+
+Processing query
+a person sitting on a person standing next to two people have their phones
+cluster = 23
+==============================================
+Complete query
+a person sitting on a person standing next to two people have their phones
+ belongs to cluster: 23. Time used = 77 s
+********************************
+
+
+Processing query
+four engine airliner is parked as it its loading up off of it.
+cluster = 18
+==============================================
+Complete query
+four engine airliner is parked as it its loading up off of it.
+ belongs to cluster: 18. Time used = 29 s
+********************************
+
+
+Processing query
+an outside vase sitting in a field and flowers.
+cluster = 2
+==============================================
+Complete query
+an outside vase sitting in a field and flowers.
+ belongs to cluster: 2. Time used = 27 s
+********************************
+
+
+Processing query
+a man and a woman playing a game with wii remotes.
+cluster = 13
+==============================================
+Complete query
+a man and a woman playing a game with wii remotes.
+ belongs to cluster: 13. Time used = 34 s
+********************************
+
+
+Processing query
+a young woman standing [UNK] to sitting in the surf board in a boat
+cluster = 8
+==============================================
+Complete query
+a young woman standing [UNK] to sitting in the surf board in a boat
+ belongs to cluster: 8. Time used = 30 s
+********************************
+
+
+Processing query
+a man leaning on a couch looking around the end of a wooden door.
+cluster = 6
+==============================================
+Complete query
+a man leaning on a couch looking around the end of a wooden door.
+ belongs to cluster: 6. Time used = 28 s
+********************************
+
+
+Processing query
+a tree branch on the ground in the dirt.
+cluster = 2
+==============================================
+Complete query
+a tree branch on the ground in the dirt.
+ belongs to cluster: 2. Time used = 46 s
+********************************
+
+Processing query
+uniform that has hit the ball.
+cluster = 23
+==============================================
+Complete query
+uniform that has hit the ball.
+ belongs to cluster: 23. Time used = 77 s
+********************************
+
+Processing query
+a police officer sitting on a motorcycle outside
+cluster = 15
+==============================================
+Complete query
+a police officer sitting on a motorcycle outside
+ belongs to cluster: 15. Time used = 49 s
+********************************
+
+Processing query
+the zebras work with a rose in the background.
+cluster = 24
+==============================================
+Complete query
+the zebras work with a rose in the background.
+Request of item: the zebras work with a rose in the background. belongs to cluster: 24. Time used = 39 s
+********************************
+03:30:34.509 [http-nio-127.0.0.1-6001-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+03:30:35.366 [http-nio-127.0.0.1-6001-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+
+
+
+
+
+
+
+
+
+
+
