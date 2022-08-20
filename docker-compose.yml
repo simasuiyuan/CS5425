@@ -1,0 +1,42 @@
+services:
+  spring-boot:
+    container_name: spring-boot-container
+    image: "spring-boot/image-retrival-app"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    depends_on:
+      - mongo
+    # ports:
+    #   - "6001:6001"
+    network_mode: host
+    environment:
+      - SERVER_PORT=6001
+      - SPRING_DATA_MONGODB_HOST=localhost
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=cs5425
+    expose:
+      - 6001
+    security_opt:
+      - seccomp:unconfined
+    # networks:
+    #   - main-network
+
+  mongo:
+    image: mongo:5.0
+    container_name: mongo
+    hostname: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=CS5425
+    networks:
+      - main-network
+    command: ["--bind_ip_all"]
+
+networks:
+  main-network:
+    external:
+      name: cs5425-app
